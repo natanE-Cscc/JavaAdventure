@@ -48,7 +48,7 @@ public class Lantern {
         return "A tarnished, old lantern that has seen better days. " + getLitDescription();
     }
 
-    private String getLitDescription() {
+    public String getLitDescription() {
         return !lit ? "It is unlit." : "It glows softly.";
     }
 
