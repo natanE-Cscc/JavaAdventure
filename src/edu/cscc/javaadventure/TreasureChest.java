@@ -2,7 +2,7 @@ package edu.cscc.javaadventure;
 
 /**
  * Represents a treasure chest in a role-playing game.
- * The treasure chst can be locked or unlocked, and open or unopened.
+ * The treasure chest can be locked or unlocked, and open or unopened.
  * A locked chest must be unlocked before it can be opened. Locking a chest
  * also closes it.
  * A treasure chest also has a weight and a description. The description is
@@ -92,7 +92,7 @@ public class TreasureChest {
         return "A sturdy iron chest. " + getLockDescription();
     }
 
-    private String getLockDescription() {
+    String getLockDescription() {
         return this.locked ? "It is locked." : "It is unlocked.";
     }
 }
