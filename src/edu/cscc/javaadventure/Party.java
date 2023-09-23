@@ -1,17 +1,26 @@
 package edu.cscc.javaadventure;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Represents a party of adventures in the JavaAdventure game.
  * Party can add, remove, find, and get members, as well as determining the size
  * of the party. Party members must have unique names.
  */
-public class Party {
+public class Party extends MovableObject {
     private HashMap<String, Character> members;
 
+
     public Party() {
+        super("party", "party descriptions", null);
         members = new HashMap<>();
+    }
+
+    @Override
+    protected void setupDescriptionModifiers() {
+        //nothing to do
     }
 
     /**
@@ -59,4 +68,21 @@ public class Party {
 
         return characters;
     }
+
+    @Override
+    public void setRoom(Room room) {
+        super.setRoom(room);
+        for(Character character: members.values())  {
+            character.setRoom(room);
+        }
+    }
+
+    @Override
+    public void move(Direction direction) {
+        super.setRoom(getRoom());
+        for(Character character : members.values()) {
+            character.move(direction);
+        }
+    }
+
 }

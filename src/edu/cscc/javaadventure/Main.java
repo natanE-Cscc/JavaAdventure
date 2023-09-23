@@ -1,6 +1,5 @@
 package edu.cscc.javaadventure;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -56,5 +55,8 @@ public class Main {
         party.removeMember(gandalf.getName());
 
         System.out.println("Party size: " + party.size());
+
+
+
     }
 }
