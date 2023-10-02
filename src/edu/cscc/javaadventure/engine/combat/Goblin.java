@@ -2,10 +2,7 @@ package edu.cscc.javaadventure.engine.combat;
 import edu.cscc.javaadventure.MovableObject;
 import edu.cscc.javaadventure.Weapon;
 import edu.cscc.javaadventure.engine.InvalidRollException;
-import edu.cscc.javaadventure.engine.combat.Combatant;
-import edu.cscc.javaadventure.engine.combat.OpponentIncapacitatedException;
-import edu.cscc.javaadventure.engine.combat.Spear;
-import edu.cscc.javaadventure.engine.combat.UnableToWieldWeaponException;
+
 
 public class Goblin extends MovableObject implements Combatant {
     private int initiative;
@@ -28,6 +25,7 @@ public class Goblin extends MovableObject implements Combatant {
 
     @Override
     protected void setupDescriptionModifiers() {
+        //
 
     }
 

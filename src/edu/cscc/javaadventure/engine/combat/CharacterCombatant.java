@@ -12,7 +12,6 @@ public class CharacterCombatant implements Combatant{
     private int initiative;
     private int baseArmorClassBonus;
 
-    //Initializing with the current default weapon
 
     public CharacterCombatant (Character character) {
         this.character= character;
@@ -81,7 +80,7 @@ public class CharacterCombatant implements Combatant{
     public String attack(int roll, Combatant target) {
         try {
             if (roll < 1 || roll > 20) {
-                throw new InvalidRollException("Inapplicable roll value");
+                throw new InvalidRollException("Invalid roll");
             }
             if (!isActiveCombatant()) {
                 throw new IllegalStateException("Defeated  could not attack");
