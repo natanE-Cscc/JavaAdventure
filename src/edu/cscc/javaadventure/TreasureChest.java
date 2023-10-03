@@ -120,7 +120,7 @@ public class TreasureChest  {
     }
     public boolean addContents() {
         for (JAObject jaObject : contents) {
-            if (!isLocked()&&isOpen()) {
+            if (!isOpen()) {
                 contents.add(jaObject);
                 return true;
             }

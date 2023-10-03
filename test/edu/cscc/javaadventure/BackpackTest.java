@@ -53,23 +53,9 @@ class BackpackTest {
         contentsT.add(new JAObject("secondPlayer", "second Play to win win", 17.00));
 
         backpack.getContents().addAll(contentsT);
-
-
-        //assertEquals(1, backpack.getContents().size());
         assertFalse(backpack.getContents().contains(contentsT));
 
-
-//    }
         }
-
-
-
-//        backpack.getContents().add(firstObject);
-//        backpack.getContents().add(secondObject);
-//
-//       assertEquals(0, backpack.getContents().size());
-//        assertFalse( backpack.getContents().contains(firstObject));
-//        assertFalse(backpack.getContents().contains(secondObject));
 
 
     @Test

@@ -31,20 +31,12 @@ public class TreasureChestTest {
     @Test
     void isOpen() {
         treasureChest.open();
-        if (treasureChest.isOpen()) {
-            assertFalse(treasureChest.isLocked());
-        } else {
             assertTrue(treasureChest.isLocked());
-        }
     }
 
     @Test
-    void isLocked() {
-        if (treasureChest.isLocked()) {
+    void testTreasureChestIsLocked() {
             assertTrue(treasureChest.isLocked());
-        } else {
-            assertFalse(treasureChest.isLocked());
-        }
     }
 
     @Test
@@ -62,16 +54,10 @@ public class TreasureChestTest {
 
     @Test
     void open() {
+        treasureChest.open();
 
-
-        if (treasureChest.isLocked()) {
-            assertFalse(treasureChest.open());
-        } else {
-            treasureChest.open();
-            assertTrue(treasureChest.open());
-            assertTrue(treasureChest.isOpen());
+            assertFalse(treasureChest.isOpen());
         }
-    }
 
     @Test
     void closed() {
@@ -85,14 +71,14 @@ public class TreasureChestTest {
     }
 
     @Test
-    void getLockDescription() {
-        if (treasureChest.isLocked()) {
-            assertEquals(treasureChest.getLockDescription(), "It is locked.");
-
-        } else {
-            assertEquals(treasureChest.getLockDescription(), "It is unlocked.");
-        }
-
+    void testGetLockDescriptionOne() {
+        treasureChest.isLocked();
+        assertEquals(treasureChest.getLockDescription(), "It is locked.");
+    }
+    @Test
+    void testGetLockDescriptionTwo() {
+        treasureChest.isOpen();
+        assertEquals(treasureChest.getLockDescription(), "It is locked.");
     }
 
     @Test
