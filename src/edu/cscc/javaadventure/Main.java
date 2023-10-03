@@ -79,35 +79,35 @@ public class Main {
                 .ifPresent(found -> System.out.println("Found: " + found.getName()));
         System.out.println("Party size: " + party.size());
 
-//        Room room = new Room("A dark room.", "You are likely to be eaten by a grue.");
-//
-//        try {
-//            TreasureChest treasureChest = new TreasureChest();
-//            treasureChest.unlock();
-//            treasureChest.open();
-//            treasureChest.addObject(new BasicObject("gold", "a big pile of gold", 1.0));
-//            treasureChest.lock();
-//            room.addToContents(treasureChest);
-//        } catch (ChestAlreadyOpenException e) {
-//            e.printStackTrace();
-//        } catch (ChestLockedException e) {
-//            e.printStackTrace();
-//        }
-//        room.addToContents(new Goblin());
-//        Room hallway = new Room("hallway", "A cobweb strewn hallway.");
-//        hallway.addToContents(new Lantern());
-//        room.connectRoom(Room.SOUTH, hallway);
-//        GameState gameState = new GameState(party, room, true);
-//        Scanner scanner = new Scanner(System.in);
-//        while(gameState.isPlaying()) {
-//            System.out.println(gameState.getCurrentDescription());
-//            gameState = GameEngine.tick(gameState, () -> {
-//                System.out.print("Command: ");
-//                return scanner.nextLine();
-//            }, (message) -> {
-//                System.out.println(message);
-//            });
-//        }
+        Room room = new Room("A dark room.", "You are likely to be eaten by a grue.");
+
+        try {
+            TreasureChest treasureChest = new TreasureChest();
+            treasureChest.unlock();
+            treasureChest.open();
+            treasureChest.addObject(new BasicObject("gold", "a big pile of gold", 1.0));
+            treasureChest.lock();
+            room.addToContents(treasureChest);
+        } catch (ChestAlreadyOpenException e) {
+            e.printStackTrace();
+        } catch (ChestLockedException e) {
+            e.printStackTrace();
+        }
+        room.addToContents(new Goblin());
+        Room hallway = new Room("hallway", "A cobweb strewn hallway.");
+        hallway.addToContents(new Lantern());
+        room.connectRoom(Room.SOUTH, hallway);
+        GameState gameState = new GameState(party, room, true);
+        Scanner scannerTwo = new Scanner(System.in);
+        while(gameState.isPlaying()) {
+            System.out.println(gameState.getCurrentDescription());
+            gameState = GameEngine.tick(gameState, () -> {
+                System.out.print("Command: ");
+                return scannerTwo.nextLine();
+            }, (message) -> {
+                System.out.println(message);
+            });
+        }
 
         System.out.println("Goodbye.");
     }
