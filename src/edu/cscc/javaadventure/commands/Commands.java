@@ -1,10 +1,9 @@
 package edu.cscc.javaadventure.commands;
 
+import edu.cscc.javaadventure.Room;
 import edu.cscc.javaadventure.engine.GameState;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This class encapsulates the various commands that a user may take.
@@ -20,6 +19,15 @@ public class Commands {
          * TODO Add valid command names to the VALID_COMMANDS list here.
          * VALID_COMMANDS.add(...);
          */
+        VALID_COMMANDS.add("look");
+        VALID_COMMANDS.add("exit");
+        VALID_COMMANDS.add("up");
+        VALID_COMMANDS.add("down");
+        VALID_COMMANDS.add("north");
+        VALID_COMMANDS.add("south");
+        VALID_COMMANDS.add("east");
+        VALID_COMMANDS.add("west");
+
     }
 
     /**
@@ -30,7 +38,93 @@ public class Commands {
     private static Map<String, Command> buildCommands() {
         //Do not use anonymous, inner, abstract, or subclasses when building a command.
         //To receive full credit you *must* add a command as a lambda.
-        return null;
+        Map<String, Command> listCommand = new HashMap<>();
+
+        listCommand.put("look", (gameState, commandPrinter, commandString) -> {
+            String lookRoom = commandString.substring(4);
+            Optional<String> found = gameState.getCurrentRoom().listContents()
+                    .stream().filter(name -> name.equals(lookRoom)).findFirst();
+            found.ifPresent(nameFound ->commandPrinter.printMessage(gameState.getCurrentRoom().getObject(nameFound).getDescription()));
+            return gameState;
+        });
+
+        listCommand.put("exit", (gameState, commandPrinter, commandString) -> {
+            Room nextRoom = gameState.getCurrentRoom().getRoom("exit");
+            new GameState(gameState.getParty(), nextRoom, false);
+            return gameState;
+
+        });
+
+        listCommand.put("up", (gameState, commandPrinter, commandString) ->{
+            Room nextRoom = gameState.getCurrentRoom().getRoom("up");
+            if(nextRoom == null)
+            {commandPrinter.printMessage("You can't go that way.");}
+            else {
+                return new GameState(gameState.getParty(),nextRoom, true);
+
+            }
+            return gameState;
+        });
+
+        listCommand.put("down", (gameState, commandPrinter, commandString) ->{
+            Room nextRoom = gameState.getCurrentRoom().getRoom("down");
+            if(nextRoom == null)
+            {commandPrinter.printMessage("You can't go that way.");}
+            else {
+                return new GameState(gameState.getParty(),nextRoom, true);
+
+            }
+            return gameState;
+        });
+
+        listCommand.put("north", (gameState, commandPrinter, commandString) ->{
+            Room nextRoom = gameState.getCurrentRoom().getRoom("north");
+            if(nextRoom == null)
+            {commandPrinter.printMessage("You can't go that way.");}
+            else {
+                return new GameState(gameState.getParty(),nextRoom, true);
+
+            }
+            return gameState;
+        });
+
+        listCommand.put("south", (gameState, commandPrinter, commandString) ->{
+            Room nextRoom = gameState.getCurrentRoom().getRoom("south");
+            if(nextRoom == null)
+            {commandPrinter.printMessage("You can't go that way.");}
+            else {
+                return new GameState(gameState.getParty(),nextRoom, true);
+
+            }
+            return gameState;
+        });
+
+        listCommand.put("east", (gameState, commandPrinter, commandString) ->{
+            Room nextRoom = gameState.getCurrentRoom().getRoom("east");
+            if(nextRoom == null)
+            {commandPrinter.printMessage("You can't go that way.");}
+            else {
+                return new GameState(gameState.getParty(),nextRoom, true);
+
+            }
+            return gameState;
+        });
+
+        listCommand.put("west", (gameState, commandPrinter, commandString) ->{
+            Room nextRoom = gameState.getCurrentRoom().getRoom("west");
+            if(nextRoom == null)
+            {commandPrinter.printMessage("You can't go that way.");}
+            else {
+                return new GameState(gameState.getParty(),nextRoom, true);
+
+            }
+            return gameState;
+        });
+
+
+        return listCommand;
+
+
     }
 
     /**
@@ -45,7 +139,35 @@ public class Commands {
      */
     public static Command getCommand(String commandString) {
         //TODO Complete this method per the requirements.
-        return null;
+        String arrayOfCommands = (commandString.split("")[0]);
+        if(arrayOfCommands.equals("look")) {
+            return commands.get("look");
+        }
+        if(arrayOfCommands.equals("exit")) {
+            return commands.get("exit");
+        }
+        if(arrayOfCommands.equals("up")) {
+            return commands.get("up");
+        }
+        if(arrayOfCommands.equals("down")) {
+            return commands.get("down");
+        }
+        if(arrayOfCommands.equals("north")) {
+            return commands.get("north");
+        }
+        if(arrayOfCommands.equals("south")) {
+            return commands.get("south");
+        }
+        if(arrayOfCommands.equals("east")) {
+            return commands.get("east");
+        }
+        if(arrayOfCommands.equals("west")) {
+            return commands.get("west");
+        }
+        return ((gameState, commandPrinter, commandString1) -> {
+            commandPrinter.printMessage("Not a valid command");
+            return gameState;
+        });
     }
 
     /**
@@ -56,3 +178,4 @@ public class Commands {
         return commands;
     }
 }
+
