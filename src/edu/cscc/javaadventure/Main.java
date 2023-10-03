@@ -1,5 +1,6 @@
 package edu.cscc.javaadventure;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -15,16 +16,12 @@ public class Main {
         party.addMember(fighter);
         party.addMember(ringBearer);
 
+
         List<Character> members = party.getMembers();
         System.out.println("Party size: " + party.size());
         for (Character character : members) {
             System.out.println(character.getName());
         }
 
-        Character gandalf = party.findMember(wizard.getName());
-        System.out.println("Found: " + gandalf.getName());
-        party.removeMember(gandalf.getName());
-
-        System.out.println("Party size: " + party.size());
     }
 }
